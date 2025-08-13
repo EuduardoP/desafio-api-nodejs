@@ -113,7 +113,7 @@ Esta API permite criar, listar e buscar cursos por ID. O projeto utiliza Fastify
 flowchart TD
     A[Usuário faz requisição] --> B{Endpoint}
     B -- POST /courses --> C[Valida dados com Zod]
-    C --> D[Insere curso no banco (Drizzle ORM)]
+    C --> D[Insere curso no banco \(Drizzle ORM\)]
     D --> E[Retorna ID do curso criado]
     B -- GET /courses --> F[Consulta todos cursos no banco]
     F --> G[Retorna lista de cursos]
