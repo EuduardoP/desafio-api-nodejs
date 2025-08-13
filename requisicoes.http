@@ -1,4 +1,4 @@
-POST http://localhost:3333/courses
+POST http://localhost:1337/courses
 Content-Type: application/json
 
 {
@@ -7,8 +7,8 @@ Content-Type: application/json
 
 ###
 
-GET http://localhost:3333/courses
+GET http://localhost:1337/courses
 
 ###
 
-GET http://localhost:3333/courses/027a49a3-0c7e-441e-a1d6-4ec797c13306
+GET http://localhost:1337/courses/df48f4f0-c045-4238-889a-c38101113bea
