@@ -2,12 +2,12 @@ POST http://localhost:1337/courses
 Content-Type: application/json
 
 {
-  "title": "Curso de Docker"
+  "title": "Curso de Git"
 }
 
 ###
 
-GET http://localhost:1337/courses
+GET http://localhost:1337/courses?orderBy=title
 
 ###
 
