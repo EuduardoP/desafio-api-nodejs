@@ -1,3 +1,8 @@
 import { drizzle } from 'drizzle-orm/node-postgres'
+import { schema } from './schema/index.ts'
 
-export const db = drizzle(process.env.DATABASE_URL)
+export const db = drizzle(process.env.DATABASE_URL, {
+  logger: process.env.NODE_ENV === 'development',
+  schema,
+  casing: 'snake_case',
+})
