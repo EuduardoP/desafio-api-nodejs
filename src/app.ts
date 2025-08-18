@@ -1,4 +1,3 @@
-import fastifyJwt from '@fastify/jwt'
 import fastifySwagger from '@fastify/swagger'
 import fastifyApiReference from '@scalar/fastify-api-reference'
 import fastify from 'fastify'
@@ -60,12 +59,6 @@ if (process.env.NODE_ENV === 'development') {
 server.setSerializerCompiler(serializerCompiler)
 server.setValidatorCompiler(validatorCompiler)
 
-server.register(fastifyJwt, {
-  secret: process.env.JWT_SECRET as string,
-  verify: {
-    maxAge: '1d',
-  },
-})
 server.register(getCoursesRoute)
 server.register(getCoursesByIdRoute)
 server.register(createCoursesRoute)

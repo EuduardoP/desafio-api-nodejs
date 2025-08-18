@@ -3,14 +3,18 @@ import type { FastifyPluginAsyncZod } from 'fastify-type-provider-zod'
 import z from 'zod'
 import { db } from '../db/client.ts'
 import { schema } from '../db/schema/index.ts'
+import { checkRequestJwt } from './hooks/check-request-jwt.ts'
+import { checkUserRole } from './hooks/check-user-role.ts'
 
 export const getCoursesByIdRoute: FastifyPluginAsyncZod = async (server) => {
   await server.get(
     '/courses/:id',
     {
+      preHandler: [checkRequestJwt(), checkUserRole('student')],
       schema: {
         tags: ['courses'],
         summary: 'Get course by ID',
+        security: [{ bearerAuth: [] }],
         params: z.object({
           id: z.uuid(),
         }),
@@ -35,9 +39,8 @@ export const getCoursesByIdRoute: FastifyPluginAsyncZod = async (server) => {
         .where(eq(schema.courses.id, courseId))
 
       if (result.length > 0) {
-        return { course: result[0] }
+        return reply.status(200).send({ course: result[0] })
       }
-
       return reply.status(404).send()
     }
   )

@@ -1,8 +1,9 @@
 POST http://localhost:1337/courses
 Content-Type: application/json
+Authorization: "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJmZDMwYzgwMC0yZDhiLTQzNDMtOTRiMC1iZGFmZDA3N2I5ZTkiLCJyb2xlIjoibWFuYWdlciIsImlhdCI6MTc1NTU1NjI3Mn0.JOPMHWdegAts5uweZihY47gBDyujlWfp__4vq_WwNJA"
 
 {
-  "title": "Curso de Git"
+  "title": "Curso de Github"
 }
 
 ###
@@ -11,4 +12,14 @@ GET http://localhost:1337/courses?orderBy=title
 
 ###
 
-GET http://localhost:1337/courses/df48f4f0-c045-4238-889a-c38101113bea
+GET http://localhost:1337/courses/7cf789d8-95f2-4c7e-814b-1cbe2497a44a
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJmZDMwYzgwMC0yZDhiLTQzNDMtOTRiMC1iZGFmZDA3N2I5ZTkiLCJyb2xlIjoic3R1ZGVudCIsImlhdCI6MTc1NTU1MDk0OH0.aoTw338IKKoa8b_hcQq9_XYVkeVbx1-FSzR0KPlojjE
+###
+
+POST http://localhost:1337/sessions
+Content-Type: application/json
+
+{
+  "email": "Meire1@live.com",
+  "password": "123456"
+}

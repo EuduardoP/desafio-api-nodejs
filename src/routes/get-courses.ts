@@ -3,14 +3,18 @@ import type { FastifyPluginAsyncZod } from 'fastify-type-provider-zod'
 import z from 'zod'
 import { db } from '../db/client.ts'
 import { schema } from '../db/schema/index.ts'
+import { checkRequestJwt } from './hooks/check-request-jwt.ts'
+import { checkUserRole } from './hooks/check-user-role.ts'
 
 export const getCoursesRoute: FastifyPluginAsyncZod = async (server) => {
   await server.get(
     '/courses',
     {
+      preHandler: [checkRequestJwt(), checkUserRole('manager')],
       schema: {
         tags: ['courses'],
         summary: 'Get all courses',
+        security: [{ bearerAuth: [] }],
         querystring: z.object({
           search: z
             .string()
