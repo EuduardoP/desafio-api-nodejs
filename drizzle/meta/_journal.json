@@ -15,6 +15,34 @@
       "when": 1755103283390,
       "tag": "0001_nasty_amphibian",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1755204674706,
+      "tag": "0002_breezy_may_parker",
+      "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "7",
+      "when": 1755204738027,
+      "tag": "0003_futuristic_harpoon",
+      "breakpoints": true
+    },
+    {
+      "idx": 4,
+      "version": "7",
+      "when": 1755205023817,
+      "tag": "0004_mushy_blue_blade",
+      "breakpoints": true
+    },
+    {
+      "idx": 5,
+      "version": "7",
+      "when": 1755206704408,
+      "tag": "0005_sweet_colleen_wing",
+      "breakpoints": true
     }
   ]
 }
