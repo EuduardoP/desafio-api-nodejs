@@ -1,8 +1,11 @@
 import { fakerPT_BR as faker } from '@faker-js/faker'
+import { hash } from 'argon2'
 import { db } from './client.ts'
 import { schema } from './schema/index.ts'
 
 async function seed() {
+  const passwordHash = await hash('123456')
+
   await db.delete(schema.enrollments)
   await db.delete(schema.courses)
   await db.delete(schema.users)
@@ -10,11 +13,36 @@ async function seed() {
   const usersInsert = await db
     .insert(schema.users)
     .values([
-      { name: faker.person.fullName(), email: faker.internet.email() },
-      { name: faker.person.fullName(), email: faker.internet.email() },
-      { name: faker.person.fullName(), email: faker.internet.email() },
-      { name: faker.person.fullName(), email: faker.internet.email() },
-      { name: faker.person.fullName(), email: faker.internet.email() },
+      {
+        name: faker.person.fullName(),
+        email: faker.internet.email(),
+        role: 'student',
+        password: passwordHash,
+      },
+      {
+        name: faker.person.fullName(),
+        email: faker.internet.email(),
+        role: 'student',
+        password: passwordHash,
+      },
+      {
+        name: faker.person.fullName(),
+        email: faker.internet.email(),
+        role: 'student',
+        password: passwordHash,
+      },
+      {
+        name: faker.person.fullName(),
+        email: faker.internet.email(),
+        role: 'student',
+        password: passwordHash,
+      },
+      {
+        name: faker.person.fullName(),
+        email: faker.internet.email(),
+        role: 'student',
+        password: passwordHash,
+      },
     ])
     .returning()
 

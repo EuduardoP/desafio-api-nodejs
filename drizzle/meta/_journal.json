@@ -43,6 +43,13 @@
       "when": 1755206704408,
       "tag": "0005_sweet_colleen_wing",
       "breakpoints": true
+    },
+    {
+      "idx": 6,
+      "version": "7",
+      "when": 1755546597544,
+      "tag": "0006_right_lifeguard",
+      "breakpoints": true
     }
   ]
 }
