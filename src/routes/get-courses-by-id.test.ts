@@ -1,15 +1,21 @@
 import { randomUUID } from 'node:crypto'
 import request from 'supertest'
-import { expect, test } from 'vitest'
+import { beforeEach, expect, test } from 'vitest'
 import { api } from '../app.ts'
 import { makeCourses } from '../tests/factories/make-courses.ts'
+import { makeAuthenticatedUser } from '../tests/factories/make-user.ts'
+
+beforeEach(async () => {
+  await api.ready()
+})
 
 test('Get course by id', async () => {
-  api.ready()
-
   const course = await makeCourses()
+  const { token } = await makeAuthenticatedUser('student')
 
-  const response = await request(api.server).get(`/courses/${course.id}`)
+  const response = await request(api.server)
+    .get(`/courses/${course.id}`)
+    .set('Authorization', token)
 
   expect(response.status).toBe(200)
   expect(response.body).toEqual({
@@ -22,9 +28,11 @@ test('Get course by id', async () => {
 })
 
 test('Returns 404 when course does not exist', async () => {
-  api.ready()
+  const { token } = await makeAuthenticatedUser('student')
 
-  const response = await request(api.server).get(`/courses/${randomUUID()}`)
+  const response = await request(api.server)
+    .get(`/courses/${randomUUID()}`)
+    .set('Authorization', token)
 
   expect(response.status).toBe(404)
 })
